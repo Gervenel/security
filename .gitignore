@@ -1,2 +1,12 @@
 node_modules
 .idea
+
+/lab3/decrypted.txt
+/lab3/encrypted.txt
+/lab3/keys.xml
+
+/lab4/keys.json
+/lab4/signature.txt
+
+/lab5/output_secret_data.txt
+/lab5/secret_img.png

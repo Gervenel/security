@@ -1,6 +1,7 @@
 const steggy = require('steggy')
 const { readFileSync, writeFileSync } = require('fs')
 
+// эта библиотека работает только с png фотками, других не нашел
 const hideData = ({
         initialImgFile = './initial.png',
         dataFile = './secret_data.txt',
@@ -24,9 +25,11 @@ const revealData = ({
 } = {}) => {
     const imgToReveal = readFileSync(dataImgFile)
 
-    const revealed = steggy.reveal(password)(imgToReveal, encoding)
+    const revealed = steggy.reveal(password)(imgToReveal, encoding).toString()
 
-    writeFileSync(outPutFile, revealed.toString())
+    console.log(revealed)
+
+    writeFileSync(outPutFile, revealed)
 }
 
 hideData()
