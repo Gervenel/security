@@ -23,14 +23,22 @@ const revealData = ({
     password,
     encoding,
 } = {}) => {
-    const imgToReveal = readFileSync(dataImgFile)
+    try {
+        const imgToReveal = readFileSync(dataImgFile)
 
-    const revealed = steggy.reveal(password)(imgToReveal, encoding).toString()
+        const revealed = steggy.reveal(password)(imgToReveal, encoding).toString()
 
-    console.log(revealed)
+        console.log(revealed)
 
-    writeFileSync(outPutFile, revealed)
+        writeFileSync(outPutFile, revealed)
+    } catch (e) {
+        console.error('wrong password')
+    }
 }
 
-hideData()
-revealData()
+const test = async () => {
+    hideData({password: 'test'})
+    revealData({password: 'test2'})
+}
+
+test()
